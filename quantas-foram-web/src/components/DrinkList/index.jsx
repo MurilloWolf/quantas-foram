@@ -1,13 +1,13 @@
 import React, { useContext } from 'react';
-import { View } from 'react-native';
+import { Box } from '@mui/material';
 import DrinkCounter from '../DrinkCounter';
-import { DrinksContext } from '../Context/DrinksContext';
+import { DrinksContext } from '../../context/DrinksContext';
 
 function DrinksList() {
   const { state } = useContext(DrinksContext);
   const flasks = Object.keys(state);
   return (
-    <View>
+    <Box>
       {
         flasks.map((item) => (
           <DrinkCounter
@@ -16,7 +16,7 @@ function DrinksList() {
           />
         ))
       }
-    </View>
+    </Box>
   );
 }
 

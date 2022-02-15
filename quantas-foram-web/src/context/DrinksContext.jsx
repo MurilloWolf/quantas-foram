@@ -1,8 +1,14 @@
-import React, {
-  createContext, useState,
-} from 'react';
+import React, { createContext, useState } from 'react';
 
-const DrinksContext = createContext();
+const DEFAULT_VALUE = {
+  bottle1000: 0,
+  bottle600: 0,
+  longNeck: 0,
+  bottle350: 0,
+  beerCan: 0,
+};
+
+const DrinksContext = createContext(DEFAULT_VALUE);
 
 function DrinksProvider({ children }) {
   const [state, setState] = useState({
@@ -12,14 +18,16 @@ function DrinksProvider({ children }) {
     bottle350: 0,
     beerCan: 0,
   });
-
   const handleChangeState = (name, value) => {
     setState((prevState) => {
       const flaskQuantity = prevState[name];
-      const newFlaskQuatity = flaskQuantity + value;
-
       const nextState = { ...prevState };
-      nextState[name] = newFlaskQuatity >= 0 ? newFlaskQuatity : 0;
+
+      if (flaskQuantity + value >= 0) {
+        nextState[name] = flaskQuantity + value;
+      } else {
+        nextState[name] = 0;
+      }
       return nextState;
     });
   };

@@ -33,6 +33,7 @@ function DrinkCounter({ flask }) {
       <S.FlaskTitle>{getFlaskName()}</S.FlaskTitle>
       <S.ButtonGroup>
         <Button
+          onPress={() => onButtonPress(flask, -1)}
           buttonStyle={{ width: 64 }}
           containerStyle={{ margin: 5 }}
           disabledStyle={{
@@ -42,12 +43,12 @@ function DrinkCounter({ flask }) {
           disabledTitleStyle={{ color: '#00F' }}
           linearGradientProps={null}
           loadingProps={{ animating: true }}
-          onPress={() => onButtonPress(flask, -1)}
           icon={<Icon name="remove" type="material" color="#FFF" />}
           titleStyle={{ marginHorizontal: 5 }}
         />
         <S.FlaskQuantity>{state[flask]}</S.FlaskQuantity>
         <Button
+          onPress={() => onButtonPress(flask, 1)}
           buttonStyle={{ width: 64 }}
           containerStyle={{ margin: 5 }}
           disabledStyle={{
@@ -58,7 +59,6 @@ function DrinkCounter({ flask }) {
           disabledTitleStyle={{ color: '#00F' }}
           linearGradientProps={null}
           loadingProps={{ animating: true }}
-          onPress={() => onButtonPress(flask, 1)}
           titleStyle={{ marginHorizontal: 5 }}
         />
       </S.ButtonGroup>
